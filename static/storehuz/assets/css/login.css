@@ -1,0 +1,21 @@
+body{
+    background-color:  #f2f2f2;
+}
+.form-group{
+    margin-bottom:10px ;
+}
+input[type="text"],
+input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+}
+button[type="login"]{
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

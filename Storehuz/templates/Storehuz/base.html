@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>STOREHOUSE-WEBSITE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'storehuz/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'storehuz/assets/img/logo.png' %}" rel="logo">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'storehuz/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'storehuz/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'storehuz/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'storehuz/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'sStorehuz/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS Files -->
+  <link href="{% static 'storehuz/assets/css/variables.css' %}" rel="stylesheet">
+  <link href="{% static 'storehuz/assets/css/main.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'storehuz/assets/css/login.css' %}">
+
+
+  
+</head>
+{% if title %}
+    <title>Storehouse-About-{{ title }}</title>
+ {% else %}
+     <title>Storehouse</title>
+ {% endif %}
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Storehouse</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          <li><a href="{% url 'post-create' %}">Add Post</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+
+          {% endif %}
+          
+            <ul>
+              
+
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+<!--
+      <div class="position-relative">
+        <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
+        <a href="#" class="mx-2"><span class="bi-twitter"></span></a>
+        <a href="#" class="mx-2"><span class="bi-instagram"></span></a>
+
+        <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+        
+
+      </div>
+      -->
+    
+
+    </div>
+  
+
+  </header><!-- End Header -->
+
+  
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% block content %}{% endblock %}
+          </div>
+          
+          
+        </div>
+      </main>
+
+      <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content">
+      <div class="container">
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <h3 class="footer-heading">About STOREHOUSE</h3>
+            <p>There are fundamentals that form the basis of reasoning which certain people must have before the question of identifying who God is can be answered.</p>
+              <p>At Storehouse, we seek to share our thoughts about God, life related issues and everything in between.</p>
+            <p><a href="{% url 'about' %}" class="footer-link-more">Learn More</a></p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="{% url 'home' %}"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> About us</a></li>
+              <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contact us</a></li>
+              
+            </ul>
+          </div>
+
+
+          <div class="footer-legal">
+            <div class="container">
+      
+              <div class="row justify-content-between">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                  <div class="copyright">
+                    © Copyright <strong><span>STOREHOUSE</span></strong>. All Rights Reserved
+                  </div>
+      
+                  <div class="credits">
+                    
+                    Designed by <a href="https://cam14uche.wordpress.com/">cam14uche</a>
+                  </div>
+      
+                </div>
+              </footer>
+
+              <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'storehuz/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'storehuz/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'storehuz/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'storehuz/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'storehuz/assets/vendor/ilalidat-form/ve.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'storehuz/assets/js/ckeditor.js' %}"></script>
+  <script src="{% static 'storehuz/assets/js/main.js' %}"></script>
+
+      
+</body>    
+</html>

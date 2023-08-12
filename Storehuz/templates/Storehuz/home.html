@@ -1,0 +1,124 @@
+{% extends 'Storehuz/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<hr>
+
+<hr>
+  <!-- ======= Hero Slider Section ======= -->
+  <section id="hero-slider" class="hero-slider">
+    <div class="container-md" data-aos="fade-in">
+      <div class="row">
+        <div class="col-12">
+          <div class="swiper sliderFeaturedPosts">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="#" class="img-bg d-flex align-items-end" style="background-image: url({% static 'storehuz/assets/img/post-slide-1.jpg' %});">
+                  <div class="img-bg-inner">
+                    <h2>Search for the true Prophet </h2>
+                    <p>The essence of an introduction of many deceivers(fake prophet) is to raise the intensity for a search for the true original.</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="img-bg d-flex align-items-end" style="background-image: url({% static 'storehuz/assets/img/post-slide-2.jpg' %});">
+                  <div class="img-bg-inner">
+                    <h2>Is your believe about God true?</h2>
+                    <p>We believe that whatever God doeth it shall be forever and you believe that God has made this world including you, are you sure your believe is true?</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="img-bg d-flex align-items-end" style="background-image: url({% static 'storehuz/assets/img/post-slide-3.jpg' %});">
+                  <div class="img-bg-inner">
+                    <h2>Did man knew he would die before he started dying?</h2>
+                    <p></p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="swiper-slide">
+                <a href="#" class="img-bg d-flex align-items-end" style="background-image: url({% static 'storehuz/assets/img/post-slide-5.jpg' %});">
+                  <div class="img-bg-inner">
+                    <h2>Believing in the bible does not mean we know how it would work.</h2>
+                    <p></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="custom-swiper-button-next">
+              <span class="bi-chevron-right"></span>
+            </div>
+            <div class="custom-swiper-button-prev">
+              <span class="bi-chevron-left"></span>
+            </div>
+
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Slider Section -->
+
+
+  
+
+
+  
+
+    {% for post in posts %}
+       
+       
+   <section class="three-blocks">
+      <div class="container">
+        <div class="row">
+      <div class="col">
+        <div class="media-body">
+          <div class="text intro-text wow fadeInUp">
+          <a class="mr-2" href="{% url 'user-post' post.author.username  %}">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+       
+        <p class="article-body">{{ post.body|safe }}</p>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+    {% endfor %}
+
+    
+
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">1</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}  
+
+
+        
+        
+
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page.obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+{% endblock %}    
